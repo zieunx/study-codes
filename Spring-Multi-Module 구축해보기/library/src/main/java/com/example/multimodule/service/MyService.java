@@ -1,6 +1,6 @@
 package com.example.multimodule.service;
 
-import jdk.jfr.Enabled;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Service;
 
