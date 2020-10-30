@@ -1,4 +1,12 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
 plugins {
+    id 'org.springframework.boot' version '2.3.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id 'java'
 }
 
@@ -12,6 +20,27 @@ repositories {
 multi module
     : https://spring.io/guides/gs/multi-module/#setting-up-the-application-project
 * */
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+allprojects {
+    group = 'com.example'
+    version = '0.0.1-SNAPSHOT'
+}
+subprojects {
+
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'java-library'
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+bootJar {
+    enabled = false
 }
