@@ -1,4 +1,4 @@
-package com.study.lambda.studylambda.official.tutorial1;
+package com.study.lambda.official.tutorial1;
 
 import java.time.LocalDate;
 
