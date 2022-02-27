@@ -1,18 +1,15 @@
 package com.study.spring.collection동시성.service;
 
+import org.springframework.stereotype.Component;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class DefaultVendorServiceImpl implements VendorService {
+@Component
+public class VendorDefaultServiceImpl implements VendorService {
 	@Override
 	public void useTheTicket(String ticketNumber) {
 		log.info("기본 useTheTicket() 호출");
-
-		try {
-			Thread.sleep(8000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 	}
 
 	@Override
