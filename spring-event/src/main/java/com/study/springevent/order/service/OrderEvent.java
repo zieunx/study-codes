@@ -4,10 +4,16 @@ import lombok.AllArgsConstructor;
 import org.springframework.context.ApplicationEvent;
 
 
-@AllArgsConstructor
-public class OrderEvent {
+public class OrderEvent extends ApplicationEvent {
     private String orderId;
     private String userId;
+
+
+
+    public OrderEvent(Object source, String message) {
+        super(source);
+        this.userId = message;
+    }
 
     public String getOrderId() {
         return orderId;

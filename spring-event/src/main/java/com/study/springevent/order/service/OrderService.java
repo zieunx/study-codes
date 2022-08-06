@@ -22,7 +22,7 @@ public class OrderService {
         orderRepository.save(order);
 
 //        cartRepository.delete(cart); // 주문과 강결합 되어있는 'cart 삭제' 로직
-        applicationEventPublisher.publishEvent(new OrderEvent(order.getOrderId(), order.getUserId()));
+        applicationEventPublisher.publishEvent(new OrderEvent(this, order.getUserId()));
         // 주문 이벤트를 발생한다. 해당 이벤트를 구독하는 핸들러들이 실행된다.
     }
 }
