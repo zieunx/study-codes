@@ -1,3 +1,9 @@
-# mimi-test
+# Study widh code
 
-기능 및 작은 테스트를 위한 프로젝트들 입니다.
+코드로 쳐보면서 공부하기 위한 레포지토리
+
+### List
+
+- [Spring-Multi-Module 구축해보기](./Spring-Multi-Module%20구축해보기)
+- [spring-event 스프링 이벤트](./spring-event)
+- [spring-cache](./spring-cache)
