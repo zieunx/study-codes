@@ -14,11 +14,8 @@ public enum Fruit {
         this.text = text;
     }
 
-    public String getText() {
-        return text;
-    }
-
     public static boolean isContains(String enumText) {
-        return Fruit.values().length > 0 && Arrays.stream(Fruit.values()).anyMatch(fruit -> fruit.name().equals(enumText));
+        return Fruit.values().length > 0 && Arrays.stream(Fruit.values())
+                .anyMatch(fruit -> fruit.name().equals(enumText));
     }
 }
