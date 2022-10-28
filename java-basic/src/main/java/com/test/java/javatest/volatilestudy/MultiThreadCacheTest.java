@@ -13,6 +13,7 @@ public class MultiThreadCacheTest {
             }
             System.out.printf("stop Thread. number=%d", number);
         });
+
         increaseNumberThread.start();
         TimeUnit.SECONDS.sleep(1);
         running = false;
