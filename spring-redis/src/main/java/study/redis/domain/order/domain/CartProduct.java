@@ -26,14 +26,6 @@ public class CartProduct {
         return count;
     }
 
-    public boolean sameProduct(CartProduct addProduct) {
-        return addProduct.sameCode(this.productCode);
-    }
-
-    private boolean sameCode(String productCode) {
-        return this.productCode.equals(productCode);
-    }
-
     @Override
     public String toString() {
         return "CartProduct{" +
