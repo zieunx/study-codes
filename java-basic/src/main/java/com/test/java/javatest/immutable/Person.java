@@ -1,8 +1,8 @@
 package com.test.java.javatest.immutable;
 
 public class Person {
-    private String name;
-    private int age;
+    private final String name;
+    private final int age;
 
     public Person(String name, int age) {
         this.name = name;
@@ -10,6 +10,6 @@ public class Person {
     }
 
     public void setAge(int age) {
-        this.age = age;
+        this.age = age; // error
     }
 }
