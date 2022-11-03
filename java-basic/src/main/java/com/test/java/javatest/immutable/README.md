@@ -158,7 +158,7 @@ public class Person {
   * 테스트 코드
     ```java
     @Test
-    void 하위참조변수_변경_시_불변() {
+    void 하위참조변수_변경_시_가변() {
         // when
         Address address = new Address("county", "state", "city", "zipCode");
         Person person = new Person("이름", 20, address);
