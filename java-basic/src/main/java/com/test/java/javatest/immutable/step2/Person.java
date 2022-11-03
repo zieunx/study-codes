@@ -1,4 +1,4 @@
-package com.test.java.javatest.immutable;
+package com.test.java.javatest.immutable.step2;
 
 public class Person {
     private final String name;
@@ -9,7 +9,7 @@ public class Person {
         this.age = age;
     }
 
-    public void setAge(int age) {
+    /* public void setAge(int age) {
         this.age = age; // error
-    }
+    }*/
 }
