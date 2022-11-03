@@ -28,4 +28,29 @@ public class ImmutableMain {
 }
 ```
 
-2) 
+
+2) `setter` 가 있는 경우  
+    -> 외부에서 값을 변경할 수 있다.
+
+```java
+public class Person {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+
+public class ImmutableMain {
+    public static void main(String[] args) {
+        Person person = new Person("길동이", 20);
+        person.setAge(21);
+    }
+}
+```
