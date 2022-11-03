@@ -106,9 +106,93 @@ public class Person {
 }
 ```
 
-### 문제 3) 참조타입이 있는 경우
+### 문제 3) 참조변수가 있는 경우: 객체
 참조타입의 경우 재할당될 수는 없지만 해당 객체의 상태는 변할 수 있다.
 * 변경 전 코드
-```java
+  * `Person` 객체: `getter`만 제공한다.
+    ```java
+    public class Person {
+        private final String name;
+        private final int age;
+        private final Address address;
+    
+        public Person(String name, int age, Address address) {
+            this.name = name;
+            this.age = age;
+            this.address = address;
+        }
+    
+        public Address getAddress() {
+            return address;
+        }
+    }
+    ```
+  * `Address` 객체: update 메소드를 제공한다.
+    ```java
+    public class Address {
+        private String county;
+        private String state;
+        private String city;
+        private String zipCode;
 
+        public Address(final String county, final String state, final String city, final String zipCode) {
+            this.county = county;
+            this.state = state;
+            this.city = city;
+            this.zipCode = zipCode;
+        }
+
+        public void update(final String county, final String state, final String city, final String zipCode) {
+            this.county = county;
+            this.state = state;
+            this.city = city;
+            this.zipCode = zipCode;
+        }
+
+        @Override
+         public String toString() {
+            return String.format("%s %s %s %s", county, state, city, zipCode);
+        }
+    }
+    ```
+  * 테스트 코드
+    ```java
+    @Test
+    void 하위참조변수_변경_시_불변() {
+        // when
+        Address address = new Address("county", "state", "city", "zipCode");
+        Person person = new Person("이름", 20, address);
+
+        // given
+        address.update("county-1", "state-1", "city-1", "zipCode-1");
+
+        //then
+        assertEquals(person.getAddress(), address);
+    }
+    ```
+    같은 참조값을 바라보고 있어서 값이 변한다는 것을 알 수 있다.
+    
+### 해결 3) 불변객체의 참조변수도 불변으로 만들자.
+Address 변수도 final 으로 불변화한다.
+* 해결 후 코드
+```java
+public class Address {
+    private final String county;
+    private final String state;
+    private final String city;
+    private final String zipCode;
+
+    public Address(final String county, final String state, final String city, final String zipCode) {
+        this.county = county;
+        this.state = state;
+        this.city = city;
+        this.zipCode = zipCode;
+    }
+
+    @Override
+     public String toString() {
+        return String.format("%s %s %s %s", county, state, city, zipCode);
+    }
+}
 ```
+
