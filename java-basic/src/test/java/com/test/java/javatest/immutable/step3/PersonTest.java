@@ -1,7 +1,5 @@
 package com.test.java.javatest.immutable.step3;
 
-import com.test.java.javatest.immutable.step3.Address;
-import com.test.java.javatest.immutable.step3.Person;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
