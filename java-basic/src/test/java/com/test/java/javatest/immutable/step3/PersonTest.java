@@ -1,4 +1,4 @@
-package com.test.java.javatest.immutable;
+package com.test.java.javatest.immutable.step3;
 
 import com.test.java.javatest.immutable.step3.Address;
 import com.test.java.javatest.immutable.step3.Person;
