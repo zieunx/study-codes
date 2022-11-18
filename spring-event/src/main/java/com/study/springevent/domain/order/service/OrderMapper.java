@@ -1,7 +1,7 @@
-package com.study.springevent.order.service;
+package com.study.springevent.domain.order.service;
 
-import com.study.springevent.cart.domain.Cart;
-import com.study.springevent.order.domain.Order;
+import com.study.springevent.domain.cart.domain.Cart;
+import com.study.springevent.domain.order.domain.Order;
 import org.springframework.stereotype.Component;
 
 @Component
