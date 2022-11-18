@@ -1,0 +1,29 @@
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:~/eda;MODE=MySQL;
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+    initialization-mode: always
+  jpa:
+    database: h2
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+      show_sql: true
+      format_sql: true
+      use_sql_comments: true
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.springframework:
+      transaction: debug
+      orm.jpa: debug

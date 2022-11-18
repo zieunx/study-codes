@@ -1,4 +1,4 @@
-package com.study.springevent.cart.domain;
+package com.study.springevent.domain.cart.domain;
 
 public class Cart {
     private String userId;
