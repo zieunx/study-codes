@@ -17,24 +17,27 @@ public class OrderService {
         this.redissonClient = redissonClient;
     }
 
-    public void register(String userId) {
-        RLock lock = redissonClient.getLock("order:" + userId);
-
+    public void register(String orderSheetId) {
+        RLock lock = redissonClient.getLock("orderTemp:" + orderSheetId);
+        boolean isLocked = false;
         try {
-            boolean isLocked = lock.tryLock(0, 3, TimeUnit.SECONDS);
-            log.info("({} 의 락 획득)", userId);
+            isLocked = lock.tryLock(0, 3, TimeUnit.SECONDS);
+
             if (!isLocked) {
                 throw new IllegalStateException("락을 획득할 수 없습니다.");
             }
 
+            /* 비즈니스 로직 */
             log.info("주문 등록 처리중 ... ");
-        } catch (Exception e) {
-            log.error("에러 발생 {}: {}", e.getClass(), e.getMessage());
+            Thread.sleep(1000);
+            log.info("주문 처리 완료");
+        } catch (IllegalStateException | InterruptedException e) {
+            log.error("에러 발생 {}", e.getMessage(), e);
         } finally {
-            log.info("(unlock 수행)");
-            lock.unlock();
+            if (isLocked) {
+                log.info("(unlock 수행)");
+                lock.unlock();
+            }
         }
-
-        log.info("주문 처리 완료");
     }
 }
