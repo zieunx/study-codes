@@ -10,9 +10,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 class BeanTest {
 
     private static final String NAME = "John Smith";
+    private static final String NAME_OTHER = "Anna Jones";
 
     @Test
-    public void 동일한_bean참조시_하나의_상태가_변경되면_동일하게_값_변경됨() {
+    public void singleton_같은인스턴스_참조() {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("scopes.xml");
 
         Person personSingletonA = (Person) applicationContext.getBean("personSingleton");
@@ -21,6 +22,22 @@ class BeanTest {
         personSingletonA.setName(NAME);
 
         assertThat(personSingletonB.getName()).isEqualTo(NAME);
+
+        ((AbstractApplicationContext) applicationContext).close();
+    }
+
+    @Test
+    public void prototype_요청할때마다_다른_인스턴스_반환() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("scopes.xml");
+
+        Person personSingletonA = (Person) applicationContext.getBean("personPrototype");
+        Person personSingletonB = (Person) applicationContext.getBean("personPrototype");
+
+        personSingletonA.setName(NAME);
+        personSingletonB.setName(NAME_OTHER);
+
+        assertThat(personSingletonA.getName()).isEqualTo(NAME);
+        assertThat(personSingletonB.getName()).isEqualTo(NAME_OTHER);
 
         ((AbstractApplicationContext) applicationContext).close();
     }

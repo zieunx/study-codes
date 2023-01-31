@@ -13,6 +13,13 @@ public class Person {
         return new Person();
     }
 
+
+    @Bean
+    @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    public Person personPrototype() {
+        return new Person();
+    }
+
     public String getName() {
         return name;
     }
