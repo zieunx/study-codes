@@ -2,7 +2,7 @@ package com.study.spring.di.cycle;
 
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 public class CycleAService {
     private CycleBService cycleBService;
 
