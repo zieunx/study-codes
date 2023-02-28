@@ -1,4 +1,4 @@
-package study.spring.jpa.model;
+package study.spring.jpa.category.model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

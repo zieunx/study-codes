@@ -1,8 +1,10 @@
-package study.spring.jpa.model;
+package study.spring.jpa.category.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import study.spring.jpa.category.model.Category;
+import study.spring.jpa.category.model.CategoryRepository;
 
 import javax.persistence.EntityNotFoundException;
 

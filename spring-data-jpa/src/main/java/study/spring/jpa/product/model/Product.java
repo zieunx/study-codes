@@ -1,4 +1,4 @@
-package study.spring.jpa.model;
+package study.spring.jpa.product.model;
 
 import lombok.AccessLevel;
 import lombok.Getter;

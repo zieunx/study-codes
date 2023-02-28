@@ -1,10 +1,13 @@
-package study.spring.jpa.model;
+package study.spring.jpa.category.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import study.spring.jpa.category.model.Category;
+import study.spring.jpa.category.model.CategoryRepository;
+import study.spring.jpa.category.service.CategoryService;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
