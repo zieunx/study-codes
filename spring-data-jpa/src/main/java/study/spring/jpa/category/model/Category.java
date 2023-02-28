@@ -1,8 +1,7 @@
-package study.spring.jpa.model;
+package study.spring.jpa.category.model;
 
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.Hibernate;

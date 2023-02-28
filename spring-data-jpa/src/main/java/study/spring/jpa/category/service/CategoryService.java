@@ -1,10 +1,15 @@
-package study.spring.jpa.model;
+package study.spring.jpa.category.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import study.spring.jpa.category.dto.CategoryInfo;
+import study.spring.jpa.category.model.Category;
+import study.spring.jpa.category.model.CategoryRepository;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -14,6 +19,29 @@ public class CategoryService {
 
     public CategoryService(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
+    }
+
+    @Transactional(readOnly = true)
+    public List<CategoryInfo> findCategoriesById(Long id) {
+        List<Category> rootCategories;
+
+        if (id != null) {
+            rootCategories = categoryRepository.findAllChildren(id, true);
+        } else {
+            rootCategories = categoryRepository.findRootCategories(true);
+        }
+
+        return rootCategories.stream()
+                .map(category -> CategoryInfo.create(category, findChildren(category)))
+                .collect(Collectors.toList());
+    }
+
+    private List<CategoryInfo> findChildren(Category category) {
+        List<Category> children = categoryRepository.findAllChildren(category.getId(), true);
+
+        return children.stream()
+                .map(child -> CategoryInfo.create(child, findChildren(child)))
+                .collect(Collectors.toList());
     }
 
     @Transactional
