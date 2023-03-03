@@ -1,0 +1,1 @@
+INSERT INTO product ( id, name, price, description, stock ) VALUES ( default, '아이폰13', 1489000, '간지작살 아이폰13', 100 );

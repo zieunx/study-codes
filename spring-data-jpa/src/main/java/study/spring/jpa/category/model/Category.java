@@ -21,6 +21,8 @@ public class Category {
 
     private String name;
 
+    private Boolean displayYn;
+
     @ManyToOne(targetEntity = Category.class, fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
     @JoinColumn(name = "parent_id")
     private Category parentCategory;
