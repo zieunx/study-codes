@@ -26,7 +26,7 @@ public class Customer {
     @JoinColumn(name = "customer_id")
     private List<Subscription> subscriptions;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id")
     private List<PaymentMethod> paymentMethods;
 
