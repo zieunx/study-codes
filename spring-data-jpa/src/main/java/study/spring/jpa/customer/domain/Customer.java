@@ -22,12 +22,27 @@ public class Customer {
 
     private String phone;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "customer_id")
     private List<Subscription> subscriptions;
 
-    public Customer(String name, String phone, List<Subscription> subscriptions) {
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private List<PaymentMethod> paymentMethods;
+
+    public Customer(String name, String phone, List<Subscription> subscriptions, List<PaymentMethod> paymentMethods) {
         this.name = name;
         this.phone = phone;
         this.subscriptions = subscriptions;
+        this.paymentMethods = paymentMethods;
+    }
+
+    public void removePaymentMethod(long paymentMethodId) {
+        PaymentMethod findPaymentMethod = paymentMethods.stream()
+                .filter(paymentMethod -> paymentMethod.getId() == paymentMethodId)
+                .findFirst()
+                .orElseThrow(EntityNotFoundException::new);
+
+        paymentMethods.remove(findPaymentMethod);
     }
 }

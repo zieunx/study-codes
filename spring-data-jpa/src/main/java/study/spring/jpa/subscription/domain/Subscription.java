@@ -24,10 +24,6 @@ public class Subscription {
     @CreatedDate
     private LocalDateTime createdAt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
-
     public Subscription(String generateType) {
         this.generateType = generateType;
     }
