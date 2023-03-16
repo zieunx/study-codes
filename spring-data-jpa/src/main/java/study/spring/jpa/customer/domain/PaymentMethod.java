@@ -18,7 +18,12 @@ public class PaymentMethod {
 
     private String cardNumber;
 
-    public PaymentMethod(String cardNumber) {
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    public PaymentMethod(String cardNumber, Customer customer) {
         this.cardNumber = cardNumber;
+        this.customer = customer;
     }
 }
