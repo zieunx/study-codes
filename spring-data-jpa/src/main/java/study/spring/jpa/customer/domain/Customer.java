@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import study.spring.jpa.subscription.domain.Subscription;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -22,19 +23,15 @@ public class Customer {
 
     private String phone;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "customer_id")
-    private List<Subscription> subscriptions;
+    @OneToMany(mappedBy = "customer")
+    private List<Subscription> subscriptions = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id")
-    private List<PaymentMethod> paymentMethods;
+    @OneToMany(mappedBy = "customer")
+    private List<PaymentMethod> paymentMethods = new ArrayList<>();
 
-    public Customer(String name, String phone, List<Subscription> subscriptions, List<PaymentMethod> paymentMethods) {
+    public Customer(String name, String phone) {
         this.name = name;
         this.phone = phone;
-        this.subscriptions = subscriptions;
-        this.paymentMethods = paymentMethods;
     }
 
     public void removePaymentMethod(long paymentMethodId) {
@@ -44,5 +41,13 @@ public class Customer {
                 .orElseThrow(EntityNotFoundException::new);
 
         paymentMethods.remove(findPaymentMethod);
+    }
+
+    public void addPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethods.add(paymentMethod);
+    }
+
+    public void addSubscription(Subscription subscription) {
+        this.subscriptions.add(subscription);
     }
 }
