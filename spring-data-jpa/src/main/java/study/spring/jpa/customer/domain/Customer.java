@@ -26,7 +26,7 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private List<Subscription> subscriptions = new ArrayList<>();
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PaymentMethod> paymentMethods = new ArrayList<>();
 
     public Customer(String name, String phone) {
