@@ -12,6 +12,8 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceException;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
 public class CustomerRepositoryTest extends DataJpaTestSupport {
@@ -22,9 +24,8 @@ public class CustomerRepositoryTest extends DataJpaTestSupport {
         this.customerRepository = customerRepository;
     }
 
-
     @Test
-    void 결제수단_삭제시_연결데이터가_있으면_에러발생() {
+    void 결제수단_삭제시_연결데이터가_있으면_에러발생1() {
         Customer customer = save(
                 new Customer(
                         "홍길동",
@@ -36,11 +37,11 @@ public class CustomerRepositoryTest extends DataJpaTestSupport {
                 customer
         );
         save(
-            new Subscription(
-                "WEEK",
-                customer,
-                paymentMethod
-            )
+                new Subscription(
+                        "WEEK",
+                        customer,
+                        paymentMethod
+                )
         );
         log.info("=== 초기화 끝 ===");
         Long customerId = customer.getId();
