@@ -1,8 +1,11 @@
 package study.spring.jpa.customer.domain;
 
+
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import study.spring.jpa.subscription.domain.Subscription;
 
 import javax.persistence.*;
 
@@ -21,6 +24,9 @@ public class PaymentMethod {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
+
+    @OneToOne(mappedBy = "paymentMethod")
+    private Subscription subscription;
 
     public PaymentMethod(String cardNumber, Customer customer) {
         this.cardNumber = cardNumber;
