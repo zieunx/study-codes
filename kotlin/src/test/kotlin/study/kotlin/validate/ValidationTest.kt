@@ -15,15 +15,17 @@ class ValidationTest {
         @Nested
         inner class `공백 검사 시` {
             @Test
-            fun `validation 수행되지 않는다`() {
+            fun `validation 된다`() {
                 // given
                 val productCreateRequest = ProductCreateRequest("")
 
                 // when
-                val validation = valdator.validate(productCreateRequest)
+                val violations = valdator.validate(productCreateRequest)
 
                 // then
-                assertThat(validation).hasSize(0)
+                assertThat(violations)
+                    .extracting("message")
+                    .contains("상품명은 필수값입니다.")
             }
 
         }
