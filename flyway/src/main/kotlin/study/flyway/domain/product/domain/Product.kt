@@ -5,25 +5,33 @@ import javax.persistence.*
 @Table(name = "product")
 @Entity
 class Product(
+    id: Long = 0,
+    name: String,
+    price: Long,
+    stock: Long = 0,
+    description: String?,
+    category: String?,
+    image: String?
+) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0L,
+    val id = id
 
     @Column(name = "name", nullable = false, length = 100)
-    val name: String,
+    val name = name
 
     @Column(name = "price", nullable = false)
-    val price: Long,
+    val price = price
 
     @Column(name = "stock", nullable = false)
-    val stock: Long,
+    val stock = stock
 
-    @Column(name = "description", nullable = false, length = 1000)
-    val description: String,
+    @Column(name = "description", length = 1000)
+    val description = description
 
-    @Column(name = "price", nullable = false, length = 100)
-    val category: String,
+    @Column(name = "category", length = 100)
+    val category = category
 
-    @Column(name = "image", nullable = false, length = 200)
-    val image: String,
-)
+    @Column(name = "image", length = 200)
+    val image = image
+}

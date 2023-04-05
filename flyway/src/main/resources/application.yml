@@ -1,9 +1,27 @@
 spring:
-  profiles:
-    active: test
-  jpa:
-    show-sql: true
-
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/flyway_study
+    username: user
+    password: qwer1234
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+
+  sql:
+    init:
+      encoding: UTF-8
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
