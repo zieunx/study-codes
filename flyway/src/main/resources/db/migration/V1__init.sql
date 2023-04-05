@@ -1,7 +1,7 @@
-drop table if exists PRODUCT;
+drop table if exists product;
 
-create table PRODUCT (
-    id int not null,
+create table product (
+    id bigint not null,
     name varchar(100) not null,
     price int not null,
     stock int not null,
