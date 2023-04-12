@@ -16,14 +16,14 @@ class ProductClient {
     suspend fun call() = coroutineScope {
         async {
             delay(1000)
-            httpClient.post<Unit>("https://www.naver.com/")
+            httpClient.post("https://www.naver.com/")
         }
     }
 
     suspend fun call2() = coroutineScope {
         async {
             delay(2000)
-            httpClient.post<Unit>("https://www.naver.com/")
+            httpClient.post("https://www.naver.com/")
         }
     }
 }
