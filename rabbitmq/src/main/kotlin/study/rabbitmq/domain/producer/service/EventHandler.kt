@@ -1,4 +1,4 @@
-package study.rabbitmq.service
+package study.rabbitmq.domain.producer.service
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate
 import org.springframework.stereotype.Component
