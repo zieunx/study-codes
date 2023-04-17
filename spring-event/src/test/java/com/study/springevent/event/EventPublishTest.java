@@ -4,7 +4,7 @@ import com.study.springevent.domain.order.domain.OrderEvent;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.PayloadApplicationEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ActiveProfiles("test")
 public class EventPublishTest {
     @Autowired
-    private ApplicationContext context;
+    private ApplicationEventPublisher eventPublisher;
 
     @Autowired
     private TestOrderEventHandler orderEventHandler;
@@ -29,7 +29,7 @@ public class EventPublishTest {
         OrderEvent event = new OrderEvent(1L, "userId");
 
         // When
-        context.publishEvent(new PayloadApplicationEvent<>(this, event));
+        eventPublisher.publishEvent(event);
 
         // Then
         assertThat(orderEventHandler.isSubscript()).isTrue();
