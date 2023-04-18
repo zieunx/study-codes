@@ -21,7 +21,7 @@ public class EventPublishTest {
     private ApplicationEventPublisher eventPublisher;
 
     @Autowired
-    private TestOrderEventHandler orderEventHandler;
+    private TestOrderEventHandler testEventHandler;
 
     @Test
     public void testSampleEventPublishing() {
@@ -32,7 +32,7 @@ public class EventPublishTest {
         eventPublisher.publishEvent(event);
 
         // Then
-        assertThat(orderEventHandler.isSubscript()).isTrue();
+        assertThat(testEventHandler.isSubscript()).isTrue();
     }
 
 }
