@@ -1,6 +1,5 @@
 package com.example.multimodule.service;
 
-import com.example.multimodule.domain.Member;
 import com.example.multimodule.domain.MemberRepository;
 import org.springframework.stereotype.Service;
 

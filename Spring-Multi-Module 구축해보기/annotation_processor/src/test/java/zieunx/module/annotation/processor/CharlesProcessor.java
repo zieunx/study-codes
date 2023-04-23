@@ -1,6 +1,6 @@
-package org.example.processor;
+package zieunx.module.annotation.processor;
 
-import org.example.annotation.CharlesIntent;
+import zieunx.module.annotation.CharlesIntent;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.ProcessingEnvironment;
@@ -15,12 +15,11 @@ public class CharlesProcessor extends AbstractProcessor {
     @Override
     public synchronized void init(ProcessingEnvironment processingEnvironment) {
         super.init(processingEnvironment);
-        //프로세싱에 필요한 기본적인 정보들을 processingEnvironment 부터 가져올 수 있습니다.
     }
 
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
-        System.out.println("CharlesProcessor.process(...)");//프로세싱이 되는지 확인하기 위한 로그 확인용입니다.
+        System.out.println("애노테이션 프로세싱!!");//프로세싱이 되는지 확인하기 위한 로그 확인용입니다.
         return false;
     }
 
@@ -37,5 +36,4 @@ public class CharlesProcessor extends AbstractProcessor {
     public SourceVersion getSupportedSourceVersion() {
         return SourceVersion.latestSupported();//지원되는 소스 버전을 리턴합니다.
     }
-
 }
