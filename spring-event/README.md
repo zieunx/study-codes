@@ -35,7 +35,8 @@
 그리고 핸들러인 deleteCart(..) 의 로직을 테스트하면 되겠다.  
 하지만, 이 두 가지는 Spring Event가 발행-구독을 정상적으로 동작하도록 구현한 것인지는 테스트 하는 것이 아니다.
 
-그럼 빈 껍데기 뿐인 ApplicationContext가 제공하는 기능으로 기대하는 대로 동작하는지 확인해보면 된다.
+내가 테스트하려는 발행-구독을 테스트 하기 위해선 ApplicationEventPublisher로 발행하고 @TransactionalEventListener(@EventListener)로 구독하는지 테스트 하면 된다.
+ApplicationContext가 제공하는 기능으로 기대하는 대로 동작하는지 확인해보면 된다.
 
 ### 발행 테스트, 구독 테스트 나눠보기
 
