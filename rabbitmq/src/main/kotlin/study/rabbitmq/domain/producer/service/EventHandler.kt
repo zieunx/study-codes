@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class EventHandler(
-    val rabbitTemplate: RabbitTemplate
+    private val rabbitTemplate: RabbitTemplate
 ) {
 
     fun send(message: String) {
