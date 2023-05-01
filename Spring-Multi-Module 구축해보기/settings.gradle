@@ -3,3 +3,6 @@ include 'library'
 include 'application'
 include 'common'
 
+include 'annotation'
+include 'annotation_processor'
+
