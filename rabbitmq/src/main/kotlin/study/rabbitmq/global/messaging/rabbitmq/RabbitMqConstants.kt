@@ -1,20 +1,14 @@
 package study.rabbitmq.global.messaging.rabbitmq
 
 
-enum class RabbitMqExchange(
-    val value: String
-) {
-    TEST_EXCHANGE("test.exchange")
+object RabbitMqExchange {
+    const val TEST_EXCHANGE: String = "test.exchange"
 }
 
-enum class RabbitMqQueue(
-    val value: String
-) {
-    TEST_QUEUE("test.queue")
+object RabbitMqQueue{
+    const val TEST_QUEUE: String = "test.queue"
 }
 
-enum class RabbitMqRouteKey(
-    val value: String
-) {
-    TEST_ROUTE_KEY("test.route_key")
+object RabbitMqRouteKey{
+    const val TEST_ROUTE_KEY: String = "test.route_key"
 }

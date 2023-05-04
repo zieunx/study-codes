@@ -20,18 +20,18 @@ class RabbitMqConfig(
 
     @PostConstruct
     fun createQueues() {
-        val exchange = ExchangeBuilder.topicExchange(RabbitMqExchange.TEST_EXCHANGE.value)
+        val exchange = ExchangeBuilder.topicExchange(RabbitMqExchange.TEST_EXCHANGE)
             .build<TopicExchange>()
         amqpAdmin.declareExchange(exchange)
 
-        QueueBuilder.durable(RabbitMqQueue.TEST_QUEUE.value)
+        QueueBuilder.durable(RabbitMqQueue.TEST_QUEUE)
             .build()
             .let {queue ->
                 amqpAdmin.declareQueue(queue)
                 amqpAdmin.declareBinding(
                     BindingBuilder.bind(queue)
                         .to(exchange)
-                        .with(RabbitMqRouteKey.TEST_ROUTE_KEY.value)
+                        .with(RabbitMqRouteKey.TEST_ROUTE_KEY)
                 )
             }
     }
