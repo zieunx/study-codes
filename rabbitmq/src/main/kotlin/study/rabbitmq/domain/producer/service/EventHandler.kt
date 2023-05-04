@@ -10,7 +10,7 @@ class EventHandler(
 ) {
 
     fun send(message: String) {
-        rabbitTemplate.convertAndSend(RabbitMqQueue.TEST_QUEUE.value, message)
+        rabbitTemplate.convertAndSend(RabbitMqQueue.TEST_QUEUE, message)
         println("Sent message: $message")
     }
 }
