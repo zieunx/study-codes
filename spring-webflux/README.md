@@ -2,7 +2,7 @@
 
 > 공식문서: https://docs.spring.io/spring-framework/reference/web/webflux.html
 
-### 간략하게 주요 특징 훑어보기
+## 주요 특징 훑어보기
 
 - 적은 수의 스레드로 동시성을 처리할 수 있음
 - 더 적은 하드웨어 리소스 사용
@@ -18,3 +18,11 @@
   - Reactive Streams는 back pressure를 지원하는 명세
   - 주요목적: 구독자가 발행자가 데이터를 얼마나 빠르게 또는 느리게 생성하는지를 제어할 수 있도록 하는 것
 
+### Reactive API
+- webflux의 Reacive library는 `Reactor`
+- [Mono](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html): 0~1
+- [Flux](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html): 0~N
+- 다른 Reacive library에서 생성된 스트림도 입력으로 받을 수 있음
+- webflux는 다른 Reacive library와도 잘 작동함
+- 다른 라이브러리와도 잘 상호작용하도록 설계되어있지만 반환값은 변환 작업이 필요함
+- WebFlux는 코틀린의 코루틴 API와 함께 사용하여 명령형 프로그래밍 스타일을 지원
