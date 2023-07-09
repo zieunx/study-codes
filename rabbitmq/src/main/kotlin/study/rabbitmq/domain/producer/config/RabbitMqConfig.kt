@@ -40,4 +40,13 @@ class RabbitMqConfig(
     fun queue1(): Queue {
         return Queue("queue1", false)
     }
+
+    @Bean
+    fun ttlQueue(): Queue {
+        val arguments = mapOf(
+            "x-dead-letter-exchange" to "x2",
+            "x-message-ttl" to 5000,
+        )
+        return Queue("ttlQueue", false, false, false, arguments)
+    }
 }
