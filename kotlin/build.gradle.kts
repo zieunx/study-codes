@@ -31,6 +31,11 @@ dependencies {
     implementation("io.ktor:ktor-client-logging:2.2.4")
     implementation("io.ktor:ktor-client-jackson:2.2.4")
     implementation("io.ktor:ktor-client-mock:2.2.4")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.15.1")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-joda:2.14.2")
+    implementation("joda-time:joda-time:2.12.5")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     testImplementation("com.h2database:h2")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
