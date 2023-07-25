@@ -1,6 +1,6 @@
 # Spring Event
 
-### '주문처리' 과 '장바구니삭제' 강결합 해결해보기
+## '주문처리' 과 '장바구니삭제' 강결합 해결해보기
 - ApplicationEvent 로 이벤트 발행 및 구독
   - ApplicationEventPublisher 이벤트 발행 : [코드](src/main/java/com/study/springevent/order/service/OrderService.java)
   - 구독(listen)
@@ -13,7 +13,7 @@
   - backtony 님의 [Spring - Event Driven](https://velog.io/@backtony/Spring-Event-Driven)
   - cheese10yun 님의 [ApplicationEventPublisher 기반으로 강결합 및 트랜잭션 문제 해결](https://cheese10yun.github.io/event-transaction/)
 
-### Spring Event 구독과 발행, 테스트 할 수 있을까?
+## Spring Event 구독과 발행, 테스트할 수 있을까?
 
 기본적으로 이벤트 발행은 `ApplicationContext` 내에서 돌기 때문에 @SpringBootTest 어노테이션을 통해 테스트를 진행해야 한다고 생각했다.  
 `ApplicationEventPublisher` 의존성을 추가하여 이벤트를 발행할 거다.
@@ -140,3 +140,17 @@ public class EventPublishTest {
 ```
 
 깔꼬롬 하다~
+
+
+### 위 방법의 문제점
+
+실제 프로젝트에서는 로직을 수행하는 event handler가 있고 @SpringBootTest 로 테스트를 실행하면 이 실제 event handler가 구독을 하게 된다.  
+그럼 테스트를 완전히 분리하고 싶었지만 실제로는 커다란 하나의 테스트 환경에서 실행이 된다.  
+발행만 테스트 하려다가 구독의 로직을 모두 모킹해야 된다거나 테스트의 복잡도가 높아진다.  
+실제 실무에서 이 방법을 사용하려다가 너무 복잡한 구조에 골머리를 썩었다..
+
+### 공식적으로 지원하는 Spring Test
+
+> https://docs.spring.io/spring-framework/reference/testing/testcontext-framework/application-events.html
+
+열심히 고민해봤던게 민망할정도로 테스트를 제공해주고 있었다.
