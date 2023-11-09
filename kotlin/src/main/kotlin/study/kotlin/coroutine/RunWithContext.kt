@@ -6,7 +6,6 @@ import io.ktor.client.statement.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.lang.Thread.sleep
 
 suspend fun main() {
     suspend()
