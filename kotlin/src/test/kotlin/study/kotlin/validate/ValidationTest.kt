@@ -3,25 +3,28 @@ package study.kotlin.validate
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
-import study.kotlin.dto.ProductCreateRequest
-import study.kotlin.dto.ProductNotNullRequest
+import study.kotlin.dto.ProductNullableRequest
 import javax.validation.Validation
 
 class ValidationTest {
     private val valdator = Validation.buildDefaultValidatorFactory().validator
 
     @Nested
-    inner class `@NotBlank 는` {
+    inner class `nullable 변수의 @NotBlank 는` {
 
         @Nested
-        inner class `공백 검사 시` {
+        inner class `null이면` {
             @Test
             fun `validation 된다`() {
                 // given
-                val productCreateRequest = ProductCreateRequest(" ")
+                val productNoneNullRequest = ProductNullableRequest()
 
                 // when
-                val violations = valdator.validate(productCreateRequest)
+                val violations = valdator.validate(productNoneNullRequest)
+
+                violations.stream().forEach { item ->
+                    println(item)
+                }
 
                 // then
                 assertThat(violations)
