@@ -36,7 +36,7 @@
 하지만, 이 두 가지는 Spring Event가 발행-구독을 정상적으로 동작하도록 구현한 것인지는 테스트 하는 것이 아니다.
 
 내가 테스트하려는 발행-구독을 테스트 하기 위해선 ApplicationEventPublisher로 발행하고 @TransactionalEventListener(@EventListener)로 구독하는지 테스트 하면 된다.
-ApplicationContext가 제공하는 기능으로 기대하는 대로 동작하는지 확인해보면 된다.
+ ApplicationContext가 제공하는 기능으로 기대하는 대로 동작하는지 확인해보면 된다.
 
 ### 발행 테스트, 구독 테스트 나눠보기
 
@@ -140,6 +140,15 @@ public class EventPublishTest {
 ```
 
 깔꼬롬 하다~
+
+
+안녕하세요 이지은입니다.
+만나서 반갑습니다.
+잘 부탁드립니ㅏㄷ.
+학교종이 땡떙떙 어서 모이자
+선생님이 우리를 기다리신다.
+나리나리 개나리 잎에 따다 물고요
+산 토끼 토끼야 어디를 가느냐 깡총깡총뛰어서 어디를 가느냐
 
 
 ### 위 방법의 문제점
