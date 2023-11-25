@@ -1,4 +1,4 @@
-package study.multimodule.payment
+package study.multimodule.order
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -6,8 +6,8 @@ import org.springframework.scheduling.annotation.EnableAsync
 
 @EnableAsync
 @SpringBootApplication
-class PaymentApplication
+class OrderApplication
 
 fun main(args: Array<String>) {
-    SpringApplication.run(PaymentApplication::class.java, *args)
+    SpringApplication.run(OrderApplication::class.java, *args)
 }
