@@ -1,9 +1,13 @@
 package study.multimodule.order.service
 
-import org.springframework.stereotype.Service
+import study.multimodule.order.dto.PaymentApproveDto
+import study.multimodule.order.dto.PaymentIssueBillingKeyDto
 
-@Service
 interface PaymentService {
-    fun issueBillingKey()
-    fun requestPayment()
+    fun issueBillingKey(
+        requestDto: PaymentIssueBillingKeyDto.Request,
+    ): Result<Unit>
+    fun requestApprovePayment(
+        requestDto: PaymentApproveDto.Request,
+    ): Result<Unit>
 }
