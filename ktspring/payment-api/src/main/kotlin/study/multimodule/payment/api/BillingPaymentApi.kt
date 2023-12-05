@@ -1,5 +1,6 @@
 package study.multimodule.payment.api
 
+import mu.KotlinLogging
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -9,6 +10,7 @@ import study.multimodule.payment.api.dto.RequestPaymentBilling
 @RequestMapping("/api/payments/billing")
 @RestController
 class BillingPaymentApi {
+    val log = KotlinLogging.logger {}
 
     /**
      * 정기 결제 billing-key 발급 API
@@ -17,7 +19,7 @@ class BillingPaymentApi {
     fun issueBillingKey(
         @RequestBody requestPaymentBilling: RequestPaymentBilling
     ) {
-        // TODO
+        log.info { "[${this.javaClass.kotlin.simpleName}] issueBillingKey() /api/payments/billing/key/issue" }
     }
 
     /**
@@ -25,6 +27,6 @@ class BillingPaymentApi {
      */
     @PostMapping
     fun requestPayment() {
-        // TODO
+        log.info { "[${this.javaClass.kotlin.simpleName}] requestPayment() /api/payments/billing" }
     }
 }
