@@ -6,22 +6,28 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("event")
-class SampleController(
-    private val sampleService: SampleService,
+class EventController(
+    private val eventService: EventService,
 ) {
 
     @PostMapping("success")
     fun success() {
-        sampleService.success()
+        eventService.success(
+            OrderCommitEvent(orderCode = "order_1")
+        )
     }
 
     @PostMapping("exception")
     fun exception() {
-        sampleService.exception()
+        eventService.exception(
+            OrderCommitEvent(orderCode = "order_1")
+        )
     }
 
     @PostMapping("no-rollback")
     fun noRollback() {
-        sampleService.noRollbackTransaction()
+        eventService.noRollbackTransaction(
+            OrderCommitEvent(orderCode = "order_1")
+        )
     }
 }
