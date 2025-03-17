@@ -1,4 +1,4 @@
-rootProject.name = "rabbitmq"
+rootProject.name = "spring-amqp"
 
 include(
     "consumer",

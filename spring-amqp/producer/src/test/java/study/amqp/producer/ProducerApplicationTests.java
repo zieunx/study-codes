@@ -1,4 +1,4 @@
-package study.rabbitmq.producer;
+package study.amqp.producer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package study.rabbitmq.consumer
+package study.amqp.consumer
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
