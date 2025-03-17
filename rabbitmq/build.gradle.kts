@@ -1,36 +1,32 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-	id("org.springframework.boot") version "2.7.10"
-	id("io.spring.dependency-management") version "1.0.15.RELEASE"
-	kotlin("jvm") version "1.6.21"
-	kotlin("plugin.spring") version "1.6.21"
+	kotlin("jvm") version "1.9.25" apply false
+	kotlin("plugin.spring") version "1.9.25" apply false
+	id("org.springframework.boot") version "3.4.3" apply false
+	id("io.spring.dependency-management") version "1.1.7" apply false
 }
 
-group = "study"
-version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_11
+allprojects {
+	group = "study.rabbitmq"
+	version = "0.0.1-SNAPSHOT"
 
-repositories {
-	mavenCentral()
-}
-
-dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-amqp")
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.springframework.amqp:spring-rabbit-test")
-}
-
-tasks.withType<KotlinCompile> {
-	kotlinOptions {
-		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "11"
+	repositories {
+		mavenCentral()
 	}
 }
 
-tasks.withType<Test> {
-	useJUnitPlatform()
+subprojects {
+	apply(plugin = "java")
+	apply(plugin = "kotlin")
+
+	extensions.configure<JavaPluginExtension> {
+		toolchain {
+			languageVersion.set(JavaLanguageVersion.of(17))
+		}
+	}
+
+	extensions.configure<org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension> {
+		compilerOptions {
+			freeCompilerArgs.addAll("-Xjsr305=strict")
+		}
+	}
 }

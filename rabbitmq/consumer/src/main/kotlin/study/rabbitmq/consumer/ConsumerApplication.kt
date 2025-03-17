@@ -1,11 +1,11 @@
-package study.rabbitmq
+package study.rabbitmq.consumer
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class RabbitmqApplication
+class ConsumerApplication
 
 fun main(args: Array<String>) {
-	runApplication<RabbitmqApplication>(*args)
+    runApplication<ConsumerApplication>(*args)
 }
