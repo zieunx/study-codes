@@ -1,6 +1,7 @@
 rootProject.name = "spring-amqp"
 
 include(
-    "consumer",
-    "producer",
+    "notification:app",
+    "notification:worker",
+    "order:api",
 )
