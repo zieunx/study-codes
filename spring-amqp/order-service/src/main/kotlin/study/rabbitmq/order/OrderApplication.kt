@@ -3,9 +3,9 @@ package study.rabbitmq.order
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
-@SpringBootApplication
-class ApiApplication
+@SpringBootApplication(scanBasePackages = ["study.rabbitmq.order"])
+class OrderApplication
 
 fun main(args: Array<String>) {
-    runApplication<ApiApplication>(*args)
+    runApplication<OrderApplication>(*args)
 }
