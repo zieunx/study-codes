@@ -1,4 +1,4 @@
-package study.rabbitmq.order.infrastructure.config
+package study.rabbitmq.order.global.config
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.amqp.rabbit.annotation.EnableRabbit
